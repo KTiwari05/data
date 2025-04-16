@@ -663,6 +663,11 @@ def parse_arguments():
                         choices=["violation", "daily", "weekly", "monthly"],
                         help="Email sending frequency mode. 'violation' sends every alert; "
                              "otherwise only send if the threshold time has passed.")
+    # Add missing arguments
+    parser.add_argument("--rtsp_url", type=str, default="", help="RTSP stream URL (optional)")
+    parser.add_argument("--violation_speed", type=float, default=5.0, help="Speed threshold (mph) for violation.")
+    parser.add_argument("--violation_frames", type=int, default=5, help="Consecutive frames above threshold to declare violation.")
+
     return parser.parse_args()
 
 
